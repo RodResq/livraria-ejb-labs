@@ -4,22 +4,27 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
 	version="2.0">
 
-	<persistence-unit name="livraria" transaction-type="RESOURCE_LOCAL">
+	<persistence-unit name="livraria">
 		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
-		<class>br.com.caelum.livraria.modelo.Livro</class>
 		<class>br.com.caelum.livraria.modelo.Autor</class>
+		<class>br.com.caelum.livraria.modelo.Livro</class>
+		<class>br.com.caelum.livraria.modelo.Usuario</class>
 
+		<jta-data-source>java:/livrariaDS</jta-data-source>
+		
 		<properties>
+			<!-- Configuracoes da conexao -->
 			<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
-			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/livrariadb" />
+			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost/fj25" />
 			<property name="javax.persistence.jdbc.user" value="root" />
 			<property name="javax.persistence.jdbc.password" value="" />
 
-			<property name="hibernate.hbm2ddl.auto" value="update" />
-			<property name="hibernate.show_sql" value="false" />
+			<!-- Configuracoes especificas do Hibernate -->
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 
